@@ -5,7 +5,7 @@ class Solution:
 
         for i in range(len(nums)):
             currSum += nums[i]
-            if currSum >= maxSum:
+            if currSum > maxSum:
                 maxSum = currSum
             if currSum < 0:
                 currSum = 0
