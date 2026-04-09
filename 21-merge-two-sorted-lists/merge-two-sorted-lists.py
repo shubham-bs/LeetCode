@@ -10,27 +10,33 @@ class Solution:
         if not list2:
             return list1
 
-        if list1.val < list2.val:
-            head = list1
-            list1 = list1.next
-        else:
-            head = list2
-            list2 = list2.next
-        
-        curr = head
-        while list1 and list2:
-            if list1.val < list2.val:
-                curr.next = list1
-                list1 = list1.next
+        curr1 = list1
+        curr2 = list2
+        dummy = ListNode(0)
+        tail = dummy
+
+        while curr1 and curr2:
+            if curr1.val > curr2.val:
+                tail.next = curr2
+                curr2 = curr2.next
             else:
-                curr.next = list2
-                list2 = list2.next
+                tail.next = curr1
+                curr1 = curr1.next
+            tail = tail.next
 
-            curr = curr.next
+        if curr1:
+            tail.next = curr1
+        if curr2:
+            tail.next = curr2
 
-        curr.next = list1 if list1 else list2
+        return dummy.next
 
-        return head
+
+        
+
+
+
+
 
                 
         
