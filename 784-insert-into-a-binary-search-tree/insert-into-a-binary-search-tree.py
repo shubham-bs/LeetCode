@@ -11,17 +11,10 @@ class Solution:
 
         curr = root
 
-        while curr:
-            if curr.val > val:
-                if not curr.left:
-                    curr.left = TreeNode(val)
-                    return root
-                curr = curr.left
-            else:
-                if not curr.right:
-                    curr.right = TreeNode(val)
-                    return root
-                curr = curr.right
+        if val > curr.val:
+            curr.right = self.insertIntoBST(curr.right, val)
+        else: curr.left = self.insertIntoBST(curr.left, val)
 
+        return root
         
         
