@@ -15,7 +15,7 @@ class Solution:
             nonlocal count 
             if node.val >= maxSoFar:
                 count += 1
-                maxSoFar = max(node.val, maxSoFar)
+                maxSoFar = node.val
 
             dfs(node.left, maxSoFar)
             dfs(node.right, maxSoFar)
