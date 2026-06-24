@@ -22,28 +22,25 @@ class Trie {
         curr.isEnd = true;
     }
     
-    public boolean search(String word) {
+    private TrieNode findNode(String word){
         TrieNode curr = root;
         for(char c: word.toCharArray()){
             int index = c -'a';
             if(curr.children[index] == null){
-                return false;
+                return null;
             }
             curr = curr.children[index];
         }
-        return curr.isEnd;
+        return curr;
+    }
+
+    public boolean search(String word) {
+        TrieNode node = findNode(word);
+        return node != null && node.isEnd;
     }
     
     public boolean startsWith(String prefix) {
-        TrieNode curr = root;
-        for(char c: prefix.toCharArray()){
-            int index = c - 'a';
-            if(curr.children[index] == null){
-                return false;
-            }
-            curr = curr.children[index];
-        }
-        return true;
+        return findNode(prefix) != null;
     }
 }
 
