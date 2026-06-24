@@ -1,11 +1,6 @@
 class TrieNode{
-    TrieNode[] children;
-    boolean isEnd;
-
-    public TrieNode() {
-        children = new TrieNode[26];
-        isEnd = false;
-    }   
+    TrieNode[] children = new TrieNode[26];
+    boolean isEnd; 
 }
 
 class Trie {
