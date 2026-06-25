@@ -7,17 +7,16 @@ class Solution {
         }
 
         int ans = 0;
-
-        while(freq['a' -'a'] >0 && freq['b' -'a'] >0 &&freq['n' -'a'] >0 &&freq['l' -'a'] >1 && freq['o' -'a'] >1){
-            freq['b' -'a']--;
-            freq['a' -'a']--;
-            freq['l' -'a'] = freq['l' -'a'] -2;
-            freq['o' -'a'] = freq['o' -'a'] -2;
-            freq['n' -'a']--;
-            ans++;
-        }
-
-        return ans;
+        int b = freq['b' -'a'];
+        int a = freq['a' -'a'];
+        int l = freq['l' -'a'] / 2;
+        int o = freq['o' -'a'] / 2;
+        int n = freq['n' -'a'];
         
+        return Math.min(
+            Math.min(b, a), 
+                Math.min(
+                    Math.min(l, o), n)
+                    );
     }
 }
