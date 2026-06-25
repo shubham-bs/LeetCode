@@ -1,5 +1,9 @@
 class Solution {
     public boolean isAnagram(String s, String t) {
+        if(s.length() != t.length()){
+            return false;
+        }
+
         int[] sfreq = new int[26];
 
         for(char c: s.toCharArray()){
@@ -7,11 +11,7 @@ class Solution {
         }
 
         for(char c: t.toCharArray()){
-            sfreq[c -'a']--;
-        }
-
-        for(int i: sfreq){
-            if(i != 0){
+            if(--sfreq[c -'a'] < 0){
                 return false;
             }
         }
