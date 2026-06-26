@@ -6,10 +6,7 @@ class Solution {
             char[] arr = word.toCharArray();
             Arrays.sort(arr);
             String key = new String(arr);
-            if(!map.containsKey(key)){
-                map.put(key, new ArrayList<>());
-            }
-            map.get(key).add(word);
+            map.computeIfAbsent(key, k -> new ArrayList<>()).add(word);
         }
 
         return new ArrayList<>(map.values());
