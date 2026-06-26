@@ -2,26 +2,35 @@ class Solution {
     public int calPoints(String[] operations) {
 
         Deque<Integer> stack = new ArrayDeque<>();
+        int ans = 0;
 
         for(String op: operations){
             if(op.equals("+")){
+
                 int first = stack.pop();
                 int second = stack.peek();
                 stack.push(first);
                 stack.push(first +second);
+                ans += first + second;
+
             }else if(op.equals("D")){
-                stack.push(2 * stack.peek());
+
+                int peek = stack.peek();
+                stack.push(2 * peek);
+                ans += 2 * peek;
+
             }else if(op.equals("C")){
-                stack.pop();
+
+                int pop = stack.pop();
+                ans -= pop;
+
             }else{
+                
                 stack.push(Integer.parseInt(op));
+                ans += Integer.parseInt(op);
             }
         }
 
-        int ans = 0;
-        for(int s: stack){
-            ans += s;
-        }
         return ans;
     }
 }
