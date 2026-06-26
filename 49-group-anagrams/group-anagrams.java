@@ -9,7 +9,7 @@ class Solution {
                 freq[c -'a']++;
             }
 
-            StringBuilder key = new StringBuilder();
+            StringBuilder key = new StringBuilder(54);
 
             for(int count: freq){
                 key.append('#').append(count);
