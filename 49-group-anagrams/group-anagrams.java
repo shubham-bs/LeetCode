@@ -3,13 +3,19 @@ class Solution {
         HashMap<String, List<String>> map = new HashMap<>();
 
         for(String word: strs){
-            char[] arr = word.toCharArray();
-            Arrays.sort(arr);
-            String key = new String(arr);
-            if(!map.containsKey(key)){
-                map.put(key, new ArrayList<>());
+            int[] freq = new int[26];
+
+            for(char c: word.toCharArray()){
+                freq[c -'a']++;
             }
-            map.get(key).add(word);
+
+            StringBuilder key = new StringBuilder();
+
+            for(int count: freq){
+                key.append("#").append(count);
+            }
+
+            map.computeIfAbsent(key.toString(), k-> new ArrayList<>()).add(word);
         }
 
         return new ArrayList<>(map.values());
