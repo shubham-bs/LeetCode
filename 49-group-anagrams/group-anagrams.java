@@ -12,7 +12,7 @@ class Solution {
             StringBuilder key = new StringBuilder();
 
             for(int count: freq){
-                key.append("#").append(count);
+                key.append('#').append(count);
             }
 
             map.computeIfAbsent(key.toString(), k-> new ArrayList<>()).add(word);
