@@ -1,45 +1,39 @@
 class MinStack {
+    private final Deque<Long> stack = new ArrayDeque<>();
+    private long min;
 
-    private static class Pair{
-        int value;
-        int freq;
-        Pair(int value, int freq){
-            this.value = value;
-            this.freq = freq;
-        }
-    }
-
-    private final Deque<Integer> stack = new ArrayDeque<>();
-    private final Deque<Pair> minStack = new ArrayDeque<>();
-    
     public MinStack() {}
-
+    
     public void push(int val) {
-        stack.push(val);
-        if(minStack.isEmpty() || val < minStack.peek().value){
-            minStack.push(new Pair(val, 1));
-        }else if(val == minStack.peek().value){
-            minStack.peek().freq++;
-        }    
+        if(stack.isEmpty()){
+            stack.push((long) val);
+            min = val;
+        }else if(val >= min){
+            stack.push((long) val);
+        }else{
+            stack.push(2L * val - min);
+            min = val;
+        }
     }
     
     public void pop() {
-        int val = stack.pop();
-        Pair min = minStack.peek();
-        if(val == min.value){
-            minStack.peek().freq--;
-            if(min.freq == 0){
-                minStack.pop();
-            }
+        long top = stack.pop();
+        if(top < min){
+            min = 2*min - top;
         }
     }
     
     public int top() {
-        return stack.peek();
+        long top = stack.peek();
+        if(top >= min){
+            return (int) top;
+        }else{
+            return (int) min;
+        }
     }
     
     public int getMin() {
-        return minStack.peek().value;
+        return (int) min;
     }
 }
 
