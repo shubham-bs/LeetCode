@@ -1,10 +1,10 @@
 class MinStack {
 
     private static class Pair{
-        int num;
+        int value;
         int freq;
-        Pair(int num, int freq){
-            this.num = num;
+        Pair(int value, int freq){
+            this.value = value;
             this.freq = freq;
         }
     }
@@ -14,22 +14,21 @@ class MinStack {
     
     public MinStack() {}
 
-    public void push(int value) {
-        stack.push(value);
-        if(minStack.isEmpty()){
-            minStack.push(new Pair(value, 1));
-        }else if(value < minStack.peek().num){
-            minStack.push(new Pair(value, 1));
-        }else if(value == minStack.peek().num){
+    public void push(int val) {
+        stack.push(val);
+        if(minStack.isEmpty() || val < minStack.peek().value){
+            minStack.push(new Pair(val, 1));
+        }else if(val == minStack.peek().value){
             minStack.peek().freq++;
         }    
     }
     
     public void pop() {
         int val = stack.pop();
-        if(val == minStack.peek().num){
+        Pair min = minStack.peek();
+        if(val == min.value){
             minStack.peek().freq--;
-            if(minStack.peek().freq == 0){
+            if(min.freq == 0){
                 minStack.pop();
             }
         }
@@ -40,7 +39,7 @@ class MinStack {
     }
     
     public int getMin() {
-        return minStack.peek().num;
+        return minStack.peek().value;
     }
 }
 
