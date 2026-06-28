@@ -6,7 +6,7 @@ class Solution {
         while(l <= h){
             int mid = l + (h -l) /2;
 
-            if(target == nums[mid]){
+            if(nums[mid] == target){
                 return mid;
             }
 
@@ -27,7 +27,7 @@ class Solution {
                 }else{
                     h = mid -1;
                 }
-                
+
             }
         }
         return -1;
