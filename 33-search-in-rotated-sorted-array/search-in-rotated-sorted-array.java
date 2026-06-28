@@ -11,17 +11,23 @@ class Solution {
             }
 
             if(nums[l] <= nums[mid]){
-                if(target >= nums[l] && target < nums[mid]){
+
+                boolean inLeft = target >= nums[l] && target < nums[mid];
+                if(inLeft){
                     h = mid -1;
                 }else{
                     l = mid +1;
                 }
+
             }else{
-                if(target > nums[mid] && target <= nums[h]){
+
+                boolean inRight = target > nums[mid] && target <= nums[h];
+                if(inRight){
                     l = mid + 1;
                 }else{
                     h = mid -1;
                 }
+                
             }
         }
         return -1;
