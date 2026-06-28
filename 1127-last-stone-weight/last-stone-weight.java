@@ -2,7 +2,9 @@ class Solution {
     public int lastStoneWeight(int[] stones) {
         PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
         
-        maxHeap.addAll(Arrays.stream(stones).boxed().toList());
+        for(int stone: stones){
+            maxHeap.add(stone);
+        }
 
         while(maxHeap.size() > 1){
             int a = maxHeap.poll();
