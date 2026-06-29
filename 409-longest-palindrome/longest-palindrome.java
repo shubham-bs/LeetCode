@@ -4,11 +4,7 @@ class Solution {
         int n = s.length();
 
         for(char c: s.toCharArray()){
-            if(Character.isLowerCase(c)){
-                freq[c -'a']++;
-            }else{
-                freq[c -'A' +26]++;
-            }
+            freq[c >= 'a' ? c -'a' : c -'A' +26]++;
         }
 
         int ans = 0;
