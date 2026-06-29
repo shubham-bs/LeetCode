@@ -12,18 +12,14 @@ class Solution {
         }
 
         int ans = 0;
+        boolean hasOdd = false;
         for(int f: freq){
-            if(f % 2 == 0){
-                ans += f;
-            }else{
-                ans += f -1;
+            ans += (f /2) * 2;
+            if(f % 2 == 1){
+                hasOdd = true;
             }
         }
 
-        if(ans < n){
-            return ans +1;
-        }
-
-        return ans;
+        return hasOdd? ans +1: ans;
     }
 }
