@@ -8,14 +8,10 @@ class Solution {
         }
 
         int ans = 0;
-        boolean hasOdd = false;
         for(int f: freq){
             ans += (f /2) * 2;
-            if(f % 2 == 1){
-                hasOdd = true;
-            }
         }
 
-        return hasOdd? ans +1: ans;
+        return ans < n ? ans +1 : ans;
     }
 }
