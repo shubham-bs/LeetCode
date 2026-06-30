@@ -13,7 +13,7 @@ class Solution {
             int value = e.getValue();
             if(minHeap.size() < k){
                 minHeap.offer(e);
-            }else if(minHeap.peek().getValue() <= value){
+            }else if(minHeap.peek().getValue() < value){
                 minHeap.poll();
                 minHeap.offer(e);
             }
