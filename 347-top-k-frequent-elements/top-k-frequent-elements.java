@@ -9,11 +9,9 @@ class Solution {
         PriorityQueue<Map.Entry<Integer, Integer>> minHeap = new PriorityQueue<>((a, b) -> a.getValue() -b.getValue());
 
         for(Map.Entry<Integer, Integer> e: freq.entrySet()){
-            int key = e.getKey();
-            int value = e.getValue();
             if(minHeap.size() < k){
                 minHeap.offer(e);
-            }else if(minHeap.peek().getValue() < value){
+            }else if(minHeap.peek().getValue() < e.getValue()){
                 minHeap.poll();
                 minHeap.offer(e);
             }
