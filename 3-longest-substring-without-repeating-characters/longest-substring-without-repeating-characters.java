@@ -6,10 +6,10 @@ class Solution {
         int max = 0;
 
         while(r < s.length()){
-            freq[128 - s.charAt(r)]++;
+            freq[s.charAt(r)]++;
 
-            while(freq[128 -s.charAt(r)] > 1){
-                freq[128 -s.charAt(l)]--;
+            while(freq[s.charAt(r)] > 1){
+                freq[s.charAt(l)]--;
                 l++;
             }
             max = Math.max(max, r -l +1);
