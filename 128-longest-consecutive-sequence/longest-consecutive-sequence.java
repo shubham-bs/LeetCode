@@ -5,19 +5,21 @@ class Solution {
         for(int num: nums){
             set.add(num);
         }
-        
+
         int longest = 0;
+
         for(int num: set){
+            int len = 0;
             if(!set.contains(num -1)){
-                int length = 1;
+                len++;
                 int curr = num;
 
                 while(set.contains(curr +1)){
                     curr++;
-                    length++;
+                    len++;
                 }
-            longest = Math.max(longest, length);
             }
+            longest = Math.max(longest, len);
         }
 
         return longest;
