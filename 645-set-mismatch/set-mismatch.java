@@ -19,7 +19,7 @@ class Solution {
             }
         }
 
-        throw new IllegalStateException("Invalid input");
+        return new int[] {-1, -1};
     }
 
     private void swap(int[] nums, int i, int j){
