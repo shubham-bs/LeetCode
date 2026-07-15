@@ -8,6 +8,10 @@ class Solution {
         }
 
         for(int i = 0; i < h; i++){
+            if(haystack.charAt(i) != needle.charAt(0)){
+                continue;
+            }
+            
             int j = 0;
             while(j < n && i +j < h && haystack.charAt(i +j) == needle.charAt(j)){
                 j++;
