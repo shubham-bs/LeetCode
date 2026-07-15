@@ -4,8 +4,7 @@ class Solution {
 
         for(int num: nums){
             if(num != val){
-                nums[k] = num;
-                k++;
+                nums[k++] = num;
             }
         }
         return k;
