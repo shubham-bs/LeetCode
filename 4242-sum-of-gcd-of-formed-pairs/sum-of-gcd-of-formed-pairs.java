@@ -1,14 +1,12 @@
 class Solution {
     public long gcdSum(int[] nums) {
         int n = nums.length;
-        int[] mx = new int[n];
         int max = 0;
         int[] prefixGcd = new int[n];
 
         for(int i = 0; i < n; i++){
             max = Math.max(max, nums[i]);
-            mx[i] = max;
-            prefixGcd[i] = gcd(nums[i], mx[i]);
+            prefixGcd[i] = gcd(nums[i], max);
         }
 
         Arrays.sort(prefixGcd);
