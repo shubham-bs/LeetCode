@@ -11,21 +11,22 @@ class Solution {
 
         Arrays.sort(prefixGcd);
         int i = 0;
-        int j = n -1;
         long sum = 0;
 
-        while(i < j){
-            sum += gcd(prefixGcd[i], prefixGcd[j]);
+        while(i < n /2){
+            sum += gcd(prefixGcd[i], prefixGcd[n - 1 -i]);
             i++;
-            j--;
         }
 
         return sum;
     }
 
     private int gcd(int a, int b){
-        if(b == 0) return a;
-
-        return gcd(b, a % b);
+        while(b != 0){
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
     }
 }
