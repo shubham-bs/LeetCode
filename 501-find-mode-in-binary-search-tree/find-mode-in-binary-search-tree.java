@@ -23,8 +23,9 @@ class Solution {
     public int[] findMode(TreeNode root) {
         inOrder(root);
 
-        int[] res = new int[ans.size()];
-        for(int i = 0; i < ans.size(); i++){
+        int n = ans.size();
+        int[] res = new int[n];
+        for(int i = 0; i < n; i++){
             res[i] = ans.get(i);
         }
 
