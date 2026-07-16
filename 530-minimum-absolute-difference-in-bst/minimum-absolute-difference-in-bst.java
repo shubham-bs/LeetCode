@@ -27,12 +27,10 @@ class Solution {
         if(node == null) return;
 
         inOrder(node.left);
-        process(node);
-        inOrder(node.right);
-    }
-
-    private void process(TreeNode node){
         if(prev != null) minDiff = Math.min(minDiff, node.val - prev);
         prev = node.val; 
+
+
+        inOrder(node.right);
     }
 }
