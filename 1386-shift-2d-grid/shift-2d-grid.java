@@ -6,35 +6,14 @@ class Solution {
         int total = m * n; 
 
         if(k == 0){
-            List<List<Integer>> ans = new ArrayList<>(m);
-
-            for(int[] rowArr: grid){
-                List<Integer> row = new ArrayList<>(n);
-
-                for(int num: rowArr){
-                    row.add(num);
-                }
-                ans.add(row);
-            }
-            return ans;
+            return build(grid, m, n);
         }
 
         reverse(grid, 0, total -1, n);
         reverse(grid, 0, k -1, n);
         reverse(grid, k, total - 1, n);
 
-        List<List<Integer>> ans = new ArrayList<>(m);
-
-        for(int[] rowArr: grid){
-            List<Integer> row = new ArrayList<>(n);
-
-            for(int num: rowArr){
-                row.add(num);
-            }
-            ans.add(row);
-        }
-
-        return ans;
+        return build(grid, m, n);
     }
 
     private void reverse(int[][] grid, int start, int end, int n){
@@ -50,5 +29,20 @@ class Solution {
             start++;
             end--;
         }
+    }
+
+    private List<List<Integer>> build(int[][] grid, int m, int n){
+        List<List<Integer>> ans = new ArrayList<>(m);
+
+        for(int[] rowArr: grid){
+            List<Integer> row = new ArrayList<>(n);
+
+            for(int num: rowArr){
+                row.add(num);
+            }
+            ans.add(row);
+        }
+
+        return ans;
     }
 }
