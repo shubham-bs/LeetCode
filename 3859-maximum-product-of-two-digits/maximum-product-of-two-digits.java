@@ -10,23 +10,9 @@ class Solution {
             digits.add(digit);
         }
 
-        product(0, digits);
-        int max = -1;
-
-        for(int product: maxProduct){
-            max = Math.max(max, product);
-        }
-
-        return max;
+        digits.sort(null);
+        return digits.get(digits.size() -1) * digits.get(digits.size() -2);
     }
 
-    public void product(int index, List<Integer> digits){
-
-        for(int i = index; i < digits.size(); i++){
-            for(int j = i +1; j < digits.size(); j++){
-                int prod = digits.get(i) * digits.get(j);
-                maxProduct.add(prod);
-            }
-        }
-    }
+   
 }
