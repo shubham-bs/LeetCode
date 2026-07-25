@@ -1,18 +1,22 @@
 class Solution {
-    HashSet<Integer> maxProduct = new HashSet<>();
+    int largest = -1;
+    int secondLargest = -1;
 
     public int maxProduct(int n) {
-        List<Integer> digits = new ArrayList<>();
 
         while(n > 0){
             int digit = n % 10;
-            n /= 10;
-            digits.add(digit);
+
+            if(digit > largest){
+                secondLargest = largest;
+                largest = digit;
+            }else if(digit > secondLargest){
+                secondLargest = digit;
+            }
+
+            n /= 10;   
         }
 
-        digits.sort(null);
-        return digits.get(digits.size() -1) * digits.get(digits.size() -2);
-    }
-
-   
+        return largest * secondLargest;
+    } 
 }
