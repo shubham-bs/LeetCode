@@ -11,11 +11,9 @@ class Solution {
         }
 
         while(r < n){
-            set.remove(nums[l]);
-            l++;
+            set.remove(nums[l++]);
 
-            if(!set.add(nums[r])) return true;
-            r++;
+            if(!set.add(nums[r++])) return true;
         }
 
         return false;
