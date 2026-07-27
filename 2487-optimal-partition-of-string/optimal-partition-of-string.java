@@ -10,7 +10,7 @@ class Solution {
 
             if(seen[idx]){
                 ans++;
-                seen = new boolean[26];
+                Arrays.fill(seen, false);
             }
 
             seen[idx] = true;
