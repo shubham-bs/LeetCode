@@ -5,21 +5,23 @@ class Solution {
         Long third = null;
 
         for(int num: nums){
+            long curr = num;
+
             if((first != null && num == first) ||
             (second != null && num == second) ||
             (third != null && num == third)){
                     continue;
                 }
 
-            if(first == null || num > first){
+            if(first == null || curr > first){
                 third = second;
                 second = first;
-                first = (long) num;
-            }else if(second == null || num > second){
+                first = curr;
+            }else if(second == null || curr > second){
                 third = second;
-                second = (long) num;
-            }else if(third == null || num > third){
-                third = (long) num;
+                second = curr;
+            }else if(third == null || curr > third){
+                third = curr;
             }
         }
 
