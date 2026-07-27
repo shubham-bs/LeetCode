@@ -1,20 +1,19 @@
 class Solution {
     public int partitionString(String s) {
-        int[] map = new int[26];
+        boolean[] seen = new boolean[26];
         int ans = 0;
 
         int r = 0;
 
         while(r < s.length()){
-            char c = s.charAt(r);
-            int value = map[c - 'a'];
+            int idx = s.charAt(r) -'a';
 
-            if(value > 0){
+            if(seen[idx]){
                 ans++;
-                Arrays.fill(map, 0);
+                seen = new boolean[26];
             }
 
-            map[c - 'a']++;
+            seen[idx] = true;
             r++;
         }
 
