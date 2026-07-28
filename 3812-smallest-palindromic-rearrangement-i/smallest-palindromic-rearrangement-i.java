@@ -12,9 +12,10 @@ class Solution {
         int j = n -1;
 
         for(int k = 0; k < 26; k++){
+            char c = (char)(k + 'a');
             while(freq[k] >= 2){
-                pal[i++] = (char)(k + 'a');
-                pal[j--] = (char)(k + 'a');
+                pal[i++] = c;
+                pal[j--] = c;
                 freq[k] -= 2;
             }
         }
