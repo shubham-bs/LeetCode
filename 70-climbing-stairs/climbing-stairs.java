@@ -1,22 +1,16 @@
 class Solution {
-    int dp[];
-
     public int climbStairs(int n) {
-        dp = new int[n +1];
+        if(n < 4) return n;
 
-        return solve(n);
-    }
+        int prev1 = 3;
+        int prev2 = 2;
 
-    private int solve(int n){
-        if(n == 1) return 1;
-        if(n == 2) return 2;
-
-        if(dp[n] != 0){
-            return dp[n];
+        for(int i = 4; i < n +1; i++){
+            int curr = prev1 + prev2;
+            prev2 = prev1;
+            prev1 = curr;
         }
 
-        dp[n] = solve(n -1) + solve(n -2);
-
-        return dp[n];
+        return prev1;
     }
 }
