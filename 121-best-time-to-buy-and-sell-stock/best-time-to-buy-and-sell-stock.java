@@ -5,13 +5,7 @@ class Solution {
 
         for(int price: prices){
             min = Math.min(min, price);
-            int currProfit = 0;
-
-            if(price > min){
-                currProfit = price - min;
-            }
-
-            maxProfit = Math.max(maxProfit, currProfit);
+            maxProfit = Math.max(maxProfit, price - min);
         }
 
         return maxProfit;
