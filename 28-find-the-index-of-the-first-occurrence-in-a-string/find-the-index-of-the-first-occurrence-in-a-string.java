@@ -5,8 +5,8 @@ class Solution {
 
         if(n > h) return -1;
 
-        for(int i = 0; i < h; i++){
-            if(haystack.charAt(i) == needle.charAt(0) && i + n <= h){
+        for(int i = 0; i <= h - n; i++){
+            if(haystack.charAt(i) == needle.charAt(0)){
                 String sub = haystack.substring(i , i +n);
                 if(sub.equals(needle)) return i;
             }
