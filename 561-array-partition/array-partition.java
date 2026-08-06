@@ -4,12 +4,10 @@ class Solution {
 
         int ans = 0;
         int i = 0;
-        int j = 1;
 
-        while(j < nums.length){
-            ans += Math.min(nums[i], nums[j]);
+        while(i < nums.length){
+            ans += nums[i];
             i += 2;
-            j += 2;
         }
 
         return ans;
