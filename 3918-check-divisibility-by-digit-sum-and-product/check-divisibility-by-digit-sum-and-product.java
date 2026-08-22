@@ -5,10 +5,9 @@ class Solution {
        int m = n;
 
        while(m > 0){
-        int digit = m % 10;
+        sum += m % 10;
+        prod *= m % 10;
         m /= 10;
-        sum += digit;
-        prod *= digit;
        }
 
        return n %(sum + prod) == 0;
