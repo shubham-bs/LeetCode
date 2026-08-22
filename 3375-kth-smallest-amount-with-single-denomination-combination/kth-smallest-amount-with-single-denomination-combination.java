@@ -1,30 +1,18 @@
 class Solution {
     public long findKthSmallest(int[] coins, int k) {
-        int n = coins.length;
-        int numSubsets = 1 << n;
-        long[] subsetLcm = new long[numSubsets];
-        int[] subsetSign = new int[numSubsets];
-        
-        subsetLcm[0] = 1; 
-        for (int mask = 1; mask < numSubsets; mask++) {
-            int lsb = Integer.numberOfTrailingZeros(mask);
-            long prevLcm = subsetLcm[mask ^ (1 << lsb)];
-            subsetLcm[mask] = lcm(prevLcm, coins[lsb]);
-            subsetSign[mask] = (Integer.bitCount(mask) % 2 == 1) ? 1 : -1;
-        }
-
-        long low = 1;
-        long minCoin = coins[0];
+        long minCoin = Long.MAX_VALUE;
         for (int coin : coins) {
             minCoin = Math.min(minCoin, coin);
         }
-        long high = minCoin * k; 
+        
+        long low = 1;
+        long high = minCoin * k;
         long ans = high;
 
         while (low <= high) {
             long mid = low + (high - low) / 2;
             
-            if (countMultiples(mid, numSubsets, subsetLcm, subsetSign) >= k) {
+            if (countUniqueMultiples(0, 1, 0, mid, coins) >= k) {
                 ans = mid;
                 high = mid - 1; 
             } else {
@@ -34,12 +22,22 @@ class Solution {
         return ans;
     }
 
-    private long countMultiples(long mid, int numSubsets, long[] subsetLcm, int[] subsetSign) {
-        long count = 0;
-        for (int mask = 1; mask < numSubsets; mask++) {
-            count += subsetSign[mask] * (mid / subsetLcm[mask]);
+    private long countUniqueMultiples(int index, long currentLcm, int coinCount, long mid, int[] coins) {
+        if (index == coins.length) {
+            if (coinCount == 0) return 0;
+            long terms = mid / currentLcm;
+            return (coinCount % 2 == 1) ? terms : -terms;
         }
-        return count;
+
+        long total = countUniqueMultiples(index + 1, currentLcm, coinCount, mid, coins);
+
+        long nextLcm = lcm(currentLcm, coins[index]);
+        
+        if (nextLcm <= mid) {
+            total += countUniqueMultiples(index + 1, nextLcm, coinCount + 1, mid, coins);
+        }
+
+        return total;
     }
 
     private long gcd(long a, long b) {
