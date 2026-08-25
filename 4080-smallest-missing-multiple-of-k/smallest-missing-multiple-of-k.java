@@ -1,18 +1,17 @@
 class Solution {
     public int missingMultiple(int[] nums, int k) {
-        Set<Integer> multiples = new HashSet<>();
+        boolean[] multiples = new boolean[102];
 
         for(int num: nums){
             if(num % k == 0){
-                multiples.add(num /k);
+                multiples[num / k] = true;
             }
-        }
-        
+        } 
+
         int i = 1;
-        while(i < multiples.size() +1){
-            if(!multiples.contains(i)) break;
+        while(multiples[i]){
             i++;
-        }
+        }   
 
         return i * k;
     }
