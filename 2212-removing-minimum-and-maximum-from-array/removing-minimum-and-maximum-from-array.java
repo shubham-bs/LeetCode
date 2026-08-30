@@ -20,11 +20,7 @@ class Solution {
         int leftIdx = Math.min(minI, maxI);
         int rightIdx = Math.max(minI, maxI);
 
-
-        int bothFromFront = rightIdx + 1;
-        int bothFromBack = n - leftIdx;
-        int oneFromFrontOneFromBack = (leftIdx + 1) + (n - rightIdx);
-        
-        return Math.min(bothFromFront, Math.min(bothFromBack,oneFromFrontOneFromBack));
+        return Math.min(rightIdx + 1, 
+        Math.min(n - leftIdx ,(leftIdx + 1) + (n - rightIdx)));
     }
 }
