@@ -5,10 +5,6 @@ class Solution {
         int[] preMin = new int[n];
 
         int max = Integer.MIN_VALUE;
-        for(int i = 0; i < n; i++){
-            max = Math.max(max, nums[i]);
-            preMax[i] = max;
-        }
 
         int min = Integer.MAX_VALUE;
         for(int i = n -1; i >= 0; i--){
@@ -17,7 +13,8 @@ class Solution {
         }
 
         for (int i = 0; i < n; i++) {
-            int instabilityScore = preMax[i] - preMin[i];
+            max = Math.max(max, nums[i]);
+            int instabilityScore = max - preMin[i];
             if (instabilityScore <= k) {
                 return i; 
             }
