@@ -20,6 +20,8 @@ class Solution {
                 }else{
                     weightSum = weight;
                     currDays++;
+
+                    if(currDays > days) break;
                 }
             }
 
