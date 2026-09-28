@@ -30,6 +30,11 @@ class Solution {
                     bouqetCount++;
                     winSize = 0;
                 }
+
+                int remainingFlowers = n - 1 -i;
+                int bouqetsNeeded = m -bouqetCount;
+
+                if(remainingFlowers + winSize < bouqetsNeeded * k) break;
             }
 
             if(bouqetCount >= m){
