@@ -5,11 +5,11 @@ class Solution {
 
         int mins = 0;
 
-        Queue<int[]> q = new ArrayDeque<>();
+        Queue<Integer> q = new ArrayDeque<>();
 
         for(int i = 0; i < m; i++){
             for(int j = 0; j < n; j++){
-                if(grid[i][j] == 2) q.offer(new int[] {i, j});
+                if(grid[i][j] == 2) q.offer(i * n + j);
             }
         }
 
@@ -26,9 +26,9 @@ class Solution {
 
             for(int i = 0; i < size; i++){
 
-                int[] curr = q.poll();
-                int r = curr[0];
-                int c = curr[1];
+                int curr = q.poll();
+                int r = curr/ n;
+                int c = curr % n;
 
                 for(int[] d: dirs){
                     int nr = r + d[0];
@@ -40,7 +40,7 @@ class Solution {
                         grid[nr][nc] == 1
                     ){
                         grid[nr][nc] = 2;
-                        q.offer(new int[] {nr, nc});
+                        q.offer(nr * n + nc);
                         rotted = true;
                     }    
                 }
