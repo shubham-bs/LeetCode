@@ -4,9 +4,7 @@ class Solution {
 
        for(int i = 0; i < s.length(); i++){
         char c = s.charAt(i);
-        int idx = i +1;
-
-        ans += idx * (26 -(c -'a'));
+        ans += (i +1) * (26 -(c -'a'));
        } 
 
        return ans;
