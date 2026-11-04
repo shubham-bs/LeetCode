@@ -1,7 +1,7 @@
 class Solution {
     List<List<Integer>> ans = new ArrayList<>();
     public List<List<Integer>> permute(int[] nums) {
-        backtrack(new ArrayList<>() {}, nums, new HashSet<>());
+        backtrack(new ArrayList<>() {}, nums, new boolean[nums.length]);
 
         return ans;
     }
@@ -9,7 +9,7 @@ class Solution {
     private void backtrack(
         List<Integer> curr, 
         int[] nums,
-        HashSet<Integer> set
+        boolean[] bool
     ){
         if(curr.size() == nums.length){
             ans.add(new ArrayList<>(curr));
@@ -18,15 +18,15 @@ class Solution {
 
         //choose
         for(int i = 0; i < nums.length; i++){
-            if(set.contains(nums[i])) continue;
+            if(bool[i]) continue;
 
             curr.add(nums[i]);
-            set.add(nums[i]);
+            bool[i] = true;
 
-            backtrack(curr, nums, set);
+            backtrack(curr, nums, bool);
 
             curr.remove(curr.size() -1);
-            set.remove(nums[i]);
+            bool[i] = false;
         }
 
     }
