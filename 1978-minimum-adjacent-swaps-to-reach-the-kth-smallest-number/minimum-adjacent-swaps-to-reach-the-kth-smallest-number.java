@@ -1,6 +1,6 @@
 class Solution {
     public int getMinSwaps(String num, int k) {
-        String org = new String(num);
+        String org = num;
 
         while(k-- > 0) num = nextPermutation(num);
 
@@ -44,14 +44,9 @@ class Solution {
             return sb.toString();
         }
 
-        int i = n -1;
-        while(i >= 0){
-            if(sb.charAt(i) > sb.charAt(pivot)){
-                swap(sb, pivot, i);
-                break;
-            }
-            i--;
-        }
+        int j = n -1;
+        while(sb.charAt(j) <= sb.charAt(pivot)) j--;
+        swap(sb, pivot, j);
 
         reverse(sb, pivot +1, n -1);
 
