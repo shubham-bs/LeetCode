@@ -1,29 +1,15 @@
 class Solution:
     def jump(self, nums: list[int]) -> int:
-        dp = [-1] * len(nums)
-        return self.helper(nums, 0, dp)
+        jumps = 0
+        currEnd = 0
+        maxReach = 0
 
-    def helper(
-        self, 
-        nums: list[int],  
-        idx: int,
-        dp: list[int]
-    )-> int:
+        for i in range(len(nums) -1):
+            maxReach = max(maxReach, i + nums[i])
 
-        if idx == len(nums) -1: return 0
-        if dp[idx] != -1: return dp[idx]
+            if i == currEnd:
+                currEnd = maxReach
+                jumps += 1
 
-        jumps = float('inf')
-
-        for i in range(idx +1, idx + nums[idx] +1):
-            if i < len(nums):
-                jumps = min(
-                    jumps,
-                    self.helper(nums, i, dp) +1
-                )
-            
-        dp[idx] = jumps
-        return jumps 
-            
-
+        return jumps
         
